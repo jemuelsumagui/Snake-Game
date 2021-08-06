@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	//altezza schermo di gioco
 	static final int ALTEZZA_SCHERMO = 600;
 	
-	//unit‡ di misura che mi permette di poter poi dividere lo schermo di gioco
+	//unit√† di misura che mi permette di poter poi dividere lo schermo di gioco
 	static final int UNITA_MISURA = 15;
 	
 	//Numero di caselle di gioco
@@ -47,10 +47,10 @@ public class GamePanel extends JPanel implements ActionListener{
 	//Direzione iniziale del serpente a inizio del gioco determinata da un valore char
 	char direzione;
 	char prossimaDirezione = 'D';
-	//Mi dice se il gioco si Ë avviato
+	//Mi dice se il gioco si √® avviato
 	boolean running = false;
 	
-	//Servono per avviare il timer che dar‡ la velocit‡ e vita al gioco
+	//Servono per avviare il timer che dar√† la velocit√† e vita al gioco
 	static Timer timer;
 	
 	//Variabile che mi serve per randomizzare la posizione della mela
@@ -65,13 +65,13 @@ public class GamePanel extends JPanel implements ActionListener{
 	//E' un oggetto figlio della classe KeyAdapter, che implementa un metodo per il controllo con la tastiera
 	MyKeyAdapter keyAdapter;
 	
-	//Servono per cambiare da menu a gioco, Ë una enumerazione e i suoi attributi sono come delle costanti
+	//Servono per cambiare da menu a gioco, √® una enumerazione e i suoi attributi sono come delle costanti
 	public static enum STATO{
 		MENU,
 		GIOCO,
 	};
 	
-	//creo oggetto STATO per passare da men˘ a gioco
+	//creo oggetto STATO per passare da men√π a gioco
 	static STATO stato;
 
 	//Sono degli oggetti di tipo Menu e GameOver, che serviranno per disegnare le due schermate
@@ -86,7 +86,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		//Istanzio l'oggetto random
 		random = new Random();
 		
-		//Imposto la grandezza del pannello che riempir‡ il mio frame
+		//Imposto la grandezza del pannello che riempir√† il mio frame
 		this.setPreferredSize(new Dimension(BASE_SCHERMO, ALTEZZA_SCHERMO));
 		
 		//Imposto come sfondo il colore nero
@@ -95,57 +95,57 @@ public class GamePanel extends JPanel implements ActionListener{
 		//Mi dice se le componenti del pannello sono "focussabili", ovvero posso manipolarli?
 		this.setFocusable(true);
 		
-		//Aggiungo la possibilit‡ di usare il mouse come input
+		//Aggiungo la possibilit√† di usare il mouse come input
 		this.addMouseListener(mouseMenu=new MouseMenu());
 		this.addMouseListener(mouseGameOver=new MouseGameOver());
 		
-		//Attivo il mouse per la schermata menu, in quanto Ë la prima schermata del programma
+		//Attivo il mouse per la schermata menu, in quanto √® la prima schermata del programma
 		mouseMenu.enable=true;
 		
 		//Istanziando l'oggetto menu, praticamente lo sto disegnando nel pannello, vd. classe Menu.java
 		menu = new Menu();
 		
-		//La varibile stato Ë impostata su men˘, sar‡ utile questo valore perchË mi permetter‡
-		//di passare dal men˘ al gameplay
+		//La varibile stato √® impostata su men√π, sar√† utile questo valore perch√® mi permetter√†
+		//di passare dal men√π al gameplay
 		stato=STATO.MENU;
 		
 	}
 
-	//Metodo per iniziare la partita, Ë importante il parametro velocit‡, che lo passerÚ al timer
+	//Metodo per iniziare la partita, √® importante il parametro velocit√†, che lo passer√≤ al timer
 	public void startGame(int velocita) {
 		//Questi print sono per la verifica su console che giri bene questo metodo
 		System.out.println(classifica);
 		System.out.println(velocita);
 		
-		//Utilizzo il metodo getClassifica, vedi pi˘ avanti, per creare l'arrayList della classifica
+		//Utilizzo il metodo getClassifica, vedi pi√π avanti, per creare l'arrayList della classifica
 		//dato il file txt, se questo file non esiste me lo crea da solo
 		getClassifica();
 		
-		//CosÏ aggiungo e attivo l'oggetto per prendere in input la tastiera, utile per muovere il serpente
+		//Cos√¨ aggiungo e attivo l'oggetto per prendere in input la tastiera, utile per muovere il serpente
 		this.addKeyListener(keyAdapter=  new  MyKeyAdapter());
 		
 		//Disattivo i controlli con il mouse, che durante il gioco non mi servono
 		mouseMenu.enable=false;
 		
-		//Creo un nuovo serpente attraverso questo metodo, vedi pi˘ avanti
+		//Creo un nuovo serpente attraverso questo metodo, vedi pi√π avanti
 		newSnake();
 		
-		//Creo randomicamente la mela con questo metodo, vedi pi˘ avanti
+		//Creo randomicamente la mela con questo metodo, vedi pi√π avanti
 		newApple();
 		
-		//Dico che il gioco Ë avviato
+		//Dico che il gioco √® avviato
 		running=true;
 		
-		//Con il timer avvio praticamente il gioco, poichË scandisce, con il parametro velocit‡, l'avanzare del gioco
+		//Con il timer avvio praticamente il gioco, poich√® scandisce, con il parametro velocit√†, l'avanzare del gioco
 		//il this invece sono gli eventi che accadono ad ogni "ticchettio" del timer e si riferisce all'ActionPerfomed
-		//che Ë il metodo implementato, poichË GamePanel implementa l'interfaccia ActionListener
+		//che √® il metodo implementato, poich√® GamePanel implementa l'interfaccia ActionListener
 		timer = new Timer(velocita, this);
 		
-		//Aziono il timer cosÏ do vita a tutto quanto
+		//Aziono il timer cos√¨ do vita a tutto quanto
 		timer.start();
 	}
 	 
-	//Metodo per colorare le componenti, Ë fondamentale
+	//Metodo per colorare le componenti, √® fondamentale
 	public void paintComponent(Graphics g) {
 		//mi permette di disegnare le componenti del pannello
 		super.paintComponent(g);
@@ -177,7 +177,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			//Istanzio la mia variabile classifica come un ArrayList
 			classifica= new ArrayList<NameScore>();
 			
-			//FinchË lo scanner puÚ scannerizzare il file
+			//Finch√® lo scanner pu√≤ scannerizzare il file
 			while(scF.hasNext()) {
 				//Mi salvo come stringa ogni linea del file scannerizzato dallo scanner, serve anche per passarmi 
 				//tutto il contenuto del file
@@ -236,14 +236,15 @@ public class GamePanel extends JPanel implements ActionListener{
 		
 		//Inizializzo come direzione di default iniziale del serpente a destra
 		direzione='D';
+		prossimaDirezione='D';
 	}
 	
 	//Metodo per disegnare gli oggetti
 	public void draw(Graphics g) {
 		
-		//Nel caso in cui sono nel game play mi disegna ciÚ
+		//Nel caso in cui sono nel game play mi disegna ci√≤
 		if(stato==STATO.GIOCO) {
-			//Se il gameplay Ë affettivamente avviato
+			//Se il gameplay √® affettivamente avviato
 			if(running) {
 				
 				//Disegno le bande limite di gioco
@@ -309,13 +310,13 @@ public class GamePanel extends JPanel implements ActionListener{
 				g.setFont(gameFont.deriveFont(10f));
 				g.drawString("Press SPACE to pause ", 440, UNITA_MISURA-2);
 			}
-			//else riferito al running ovvero quando perdo, ovvero quando running Ë false
+			//else riferito al running ovvero quando perdo, ovvero quando running √® false
 			else {
 				//Stampo il GameOver e la classifica, che ho scritto nella classe GameOver
 				//attraverso il suo metodo render
 				gameOver.render(g);
 			}
-		//Se non sto in gioco, quindi sto inizialmente in modalit‡ menu
+		//Se non sto in gioco, quindi sto inizialmente in modalit√† menu
 		} else if(stato==STATO.MENU) {
 			//uso il metodo render della classe menu per disegnarmi le varie componenti del menu
 			//vedere classe Menu.java
@@ -347,7 +348,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		}
 		
 		//devo ricordare che il mio pannello ha il centro (0,0) in alto a destra
-		//in questo modo capisco quand'Ë che la testa del serpente va gi˘, s˘, destra e sinistra
+		//in questo modo capisco quand'√® che la testa del serpente va gi√π, s√π, destra e sinistra
 		direzione=prossimaDirezione;
 		switch(direzione) {
 		case 'W':
@@ -411,10 +412,10 @@ public class GamePanel extends JPanel implements ActionListener{
 			System.out.println("Collisione Muro");
 		}
 		
-		//Se succede tutto ciÚ fermo tutto
+		//Se succede tutto ci√≤ fermo tutto
 		if(!running) {
 			timer.stop();
-			//Nel costruttore di gameOver si aprir‡ il JOptionPane per l'inserimento del nome del giocatore
+			//Nel costruttore di gameOver si aprir√† il JOptionPane per l'inserimento del nome del giocatore
 			gameOver = new GameOver();
 			
 			//Disabilito l'input mouse per il menu
@@ -426,7 +427,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		}
 	}
 	
-	//Metodo dell'interfaccia ActionListener, Ë importantissimo perchË dice praticamente cosa deve fare il programma
+	//Metodo dell'interfaccia ActionListener, √® importantissimo perch√® dice praticamente cosa deve fare il programma
 	//ad ogni intervallo di tempo del timer, in questo caso deve muovere il serpente, controllare costantemente
 	//se il serpente mangia mela e se naturalmente va incontro a collissioni
 	@Override
