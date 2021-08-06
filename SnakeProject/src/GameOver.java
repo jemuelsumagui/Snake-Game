@@ -34,11 +34,13 @@ public class GameOver {
 		ImageIcon snake = new ImageIcon("snakeIcon.png");
 		nomePlayer=(String)JOptionPane.showInputDialog(null, "Insert Name: ", 
 				"Player Name", JOptionPane.QUESTION_MESSAGE, snake, null, "Player"+r);
+		if(nomePlayer!=null){
 		nomePlayer=nomePlayer.replaceAll("#", "_");
+		}
 		NameScore newPlayer= new NameScore(nomePlayer, GamePanel.score);
 		System.out.println(newPlayer);
 		
-		//Se il noem del player non è nulla allora ordino la classifica
+		//Se il noem del player non Ã¨ nulla allora ordino la classifica
 		//vedi metodo dopo
 		if(nomePlayer!=null) {
 			sortClassifica(newPlayer);
@@ -94,7 +96,7 @@ public class GameOver {
 		}
 	}
 	
-	//Questo è il metodo per disegnare gli elementi della schermata GameOver
+	//Questo Ã¨ il metodo per disegnare gli elementi della schermata GameOver
 	public void render(Graphics g) {
 		//g2d serve per disegnare figura in 2D
 		Graphics2D g2d = (Graphics2D) g;
